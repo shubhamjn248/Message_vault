@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Message Vault</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; max-width: 1000px; margin: 2rem auto; padding: 0 1rem; color: #202124; }
+    h1 { margin-bottom: .25rem; } p { color: #555; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1.5rem; }
+    th, td { border: 1px solid #ddd; padding: .7rem; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+    th:first-child,td:first-child {width: 60px; min-width: 60px; white-space: nowrap; }
+    th:last-child, td:last-child { min-width: 180px; }
+    th { background: #f3f4f6; } code { white-space: pre-wrap; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <h1>Message Vault</h1>
+  <p>Messages are redacted on the server before they are stored.</p>
+  <table aria-label="Messages">
+    <thead><tr><th>ID </th><th>Message</th><th>Created at (UTC)</th></tr></thead>
+    <tbody>
+    {% for message in messages %}
+      <tr data-message-id="{{ message.id }}">
+        <td>{{ message.id }}</td>
+        <td><code>{{ message.content }}</code></td>
+        <td>{{ message.created_at.isoformat() }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="3">No messages yet.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

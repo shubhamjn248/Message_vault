@@ -1,0 +1,18 @@
+services:
+  message-vault:
+    build: .
+    container_name: message-vault
+    ports:
+      - "8443:8443"
+    environment:
+      APP_USERNAME: ${APP_USERNAME}
+      APP_PASSWORD: ${APP_PASSWORD}
+      DATABASE_URL: sqlite:////data/messages.db
+    volumes:
+      - message_data:/data
+      - message_certs:/certs
+    restart: unless-stopped
+
+volumes:
+  message_data:
+  message_certs:
