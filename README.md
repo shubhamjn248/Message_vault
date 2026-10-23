@@ -1,4 +1,4 @@
-# SDET Assignment — Message Vault
+# Message Vault
 
 An authenticated Python web service that stores messages only after redacting sensitive information. The application detects JWT-like tokens, email addresses, valid IPv4 addresses, and Luhn-valid credit-card candidates.
 
